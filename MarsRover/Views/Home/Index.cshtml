@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Mars Rover Challenge";
+}
+<script>
+	function submitCommands() {
+		document.getElementsByName("roverResults")[0].value = "";
+		var userInput = document.getElementsByName("roverCommands")[0].value;
+		$.ajax({
+			url: "Home/RoverLogic",
+			data: { input: userInput },
+			success: function (data) {
+				document.getElementsByName("roverResults")[0].value = data;
+			}
+		})
+	}
+</script>
+
+
+
+<div class="text-center">
+	<h1>Mars Rover</h1>
+	<div>
+		<textarea name="roverCommands" style="width:50%;height:200px">
+			</textarea>
+	</div>
+	<br />
+	<button onclick="submitCommands()">
+		Deploy Rovers
+	</button>
+	<br />
+	<div>
+		<textarea name="roverResults" style="width:50%;height:200px">
+
+			</textarea>
+	</div>
+</div>
